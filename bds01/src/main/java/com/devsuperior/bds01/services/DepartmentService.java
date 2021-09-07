@@ -2,12 +2,12 @@ package com.devsuperior.bds01.services;
 
 import com.devsuperior.bds01.repositories.DepartmentRepository;
 
-public class DepartamentService {
+public class DepartmentService {
 
 	private DepartmentRepository departmentRepository;
 
 	
-	DepartamentService(DepartmentRepository departmentRepository){
+	DepartmentService(DepartmentRepository departmentRepository){
 		this.departmentRepository = departmentRepository;
 	}
 	

@@ -1,14 +1,38 @@
 package com.devsuperior.bds01.services;
 
-import com.devsuperior.bds01.repositories.DepartmentRepository;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import com.devsuperior.bds01.dto.DepartmentDTO;
+import com.devsuperior.bds01.entities.Department;
+import com.devsuperior.bds01.repositories.DepartmentRepository;
+import java.util.stream.Collectors;
+
+@Service
 public class DepartmentService {
 
-	private DepartmentRepository departmentRepository;
+	private DepartmentRepository repository;
 
 	
-	DepartmentService(DepartmentRepository departmentRepository){
-		this.departmentRepository = departmentRepository;
+	DepartmentService(DepartmentRepository repository){
+		this.repository = repository;
+	}
+	
+	
+	public List<DepartmentDTO> findAll(){
+		List<Department> list = repository.findAll();
+		
+		/* 
+		List<DepartmentDTO> listDTO = new ArrayList<>();
+		for(Department x : list ) {
+			DepartmentDTO dto = new DepartmentDTO(x);
+			listDTO.add(dto);
+		}
+		return listDTO;*/
+		
+		return list.stream().map(x -> new DepartmentDTO(x)).collect(Collectors.toList());
 	}
 	
 }
